@@ -1,0 +1,9 @@
+create table Employee(
+employeeId int,
+employeeName varchar(50),
+designation varchar(100),
+totalExperience int,
+salary int
+
+
+);

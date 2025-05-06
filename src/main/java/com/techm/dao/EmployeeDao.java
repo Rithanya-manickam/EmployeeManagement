@@ -104,8 +104,40 @@ public class EmployeeDao {
 	
 	public Employee updateEmployee(Employee employee) {
 		Connection con=DBUtil.createConnection();
-		String query="SELECT * from Employee";
+		String query = "UPDATE Employee SET empName=?, designation=?, "
+
+		+ "totalExperience=?, salary=? WHERE empId=?";
+
+		try {
+
+		PreparedStatement statement = connection.prepareStatement(query);
+
+		statement.setString(1, employee.getEmployeeName());
+
+		statement.setString(2, employee.getDesignation());
+
+		statement.setInt(3, employee.getTotalExperience());
+
+		statement.setDouble(4, employee.getSalary());
+
+		statement.setString(5, employee.getEmployeeId());
+
+		int result = statement.executeUpdate();
+
+		if (result == 1) {
+
+		return employee;
+
+		}
+
+		} catch (SQLException e) {
+
+		e.printStackTrace();
+
+		}
+
 		return null;
-	}
+
+		}
 
 }
